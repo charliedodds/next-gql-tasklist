@@ -1,6 +1,7 @@
 import { Task } from '@/__generated__/graphql'
 import createApolloClient from '@/api'
 import { ApolloError, gql } from '@apollo/client'
+import Link from 'next/link'
 import { FC } from 'react'
 
 const TASKS = gql(`
@@ -25,6 +26,11 @@ const Home: FC<Props> = ({ data, loading, error }) => {
 
   return (
     <main>
+      <div>
+        <Link href="/new">New tasks</Link>
+        <Link href="/completed">Completed tasks</Link>
+        <Link href="/offer-accepted">Accepted tasks</Link>
+      </div>
       <ul>
         {data.taskList.map((task) => (
           <li key={task._id}>{task.title}</li>
