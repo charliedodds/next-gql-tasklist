@@ -13,3 +13,11 @@ export const convertUrlToFilter = (url: string | string[]) => {
     .map((char) => char.toUpperCase())
     .join('') as Status
 }
+
+export const convertFilterToReadableText = (filter: string) => {
+  return filter
+    ?.split('')
+    .map((char) => char.toLowerCase())
+    .join('')
+    .replace('_', ' ')
+}
