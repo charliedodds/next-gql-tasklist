@@ -1,5 +1,6 @@
 import { Task } from '@/__generated__/graphql'
 import createApolloClient from '@/api'
+import TaskList from '@/components/task-list'
 import { convertUrlToFilter } from '@/helpers'
 import { Status, TaskListResponse } from '@/types'
 import { ApolloError, gql } from '@apollo/client'
@@ -29,11 +30,7 @@ const StatusPage: FC<Props> = ({ data, loading, error, status }) => {
         <Link href="/">All tasks</Link>
       </div>
       <h1>{status}</h1>
-      <ul>
-        {data.taskList.map((task) => (
-          <li key={task._id}>{task.title}</li>
-        ))}
-      </ul>
+      <TaskList tasks={data.taskList} />
     </main>
   )
 }
